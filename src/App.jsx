@@ -169,6 +169,7 @@ const Nav = ({ active }) => {
         {[["Mission","#mission"],["Products","#products"],["Technology","#technology"],["Partners","#partners"]].map(([label, href]) => (
           <a key={label} href={href} className="nav-link">{label}</a>
         ))}
+        <a href="https://chikasha-ai.vercel.app" target="_blank" rel="noopener noreferrer" className="nav-link" style={{ color:C.goldLight }}>Platform ↗</a>
         <a href="#contact" className="btn-primary" style={{ padding:"8px 18px", fontSize:11 }}>Request Demo</a>
       </div>
     </nav>
@@ -280,7 +281,7 @@ const Products = () => (
           </div>
           <div style={{ display:"flex", flexDirection:"column", gap:8, alignItems:"flex-end" }}>
             <Pill label="Live" color={C.greenLight}/>
-            <a href="https://chikashaaiplatform.vercel.app" target="_blank" rel="noopener noreferrer" className="btn-ghost">View Platform ↗</a>
+            <a href="https://chikasha-ai.vercel.app" target="_blank" rel="noopener noreferrer" className="btn-ghost">View Platform ↗</a>
           </div>
         </div>
         <div style={{ display:"flex", gap:8, flexWrap:"wrap" }}>
@@ -534,3 +535,4 @@ export default function SovereignShieldSite() {
     </div>
   );
 }
+
