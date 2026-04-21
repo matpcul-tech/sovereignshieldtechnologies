@@ -434,8 +434,21 @@ const Contact = () => {
   const [form, setForm] = useState({ name:"", org:"", email:"", type:"Tribal Nation", message:"" });
   const [sent, setSent] = useState(false);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
+    try {
+      await fetch("https://formspree.io/f/xeevodzl", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          organization: form.org,
+          email: form.email,
+          type: form.type,
+          message: form.message,
+        }),
+      });
+    } catch (e) { console.error(e); }
     setSent(true);
   };
 
@@ -535,4 +548,3 @@ export default function SovereignShieldSite() {
     </div>
   );
 }
-
