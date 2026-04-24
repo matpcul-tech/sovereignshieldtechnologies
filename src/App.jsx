@@ -208,7 +208,13 @@ const ProductGrid = ({products,accentColor}) => (
         )}
         {!p.featured && (
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:14}}>
-            <span style={{color:p.color,fontSize:24}}>{p.icon}</span>
+            <div style={{display:"flex",alignItems:"center",gap:10}}>
+              <span style={{color:p.color,fontSize:24}}>{p.icon}</span>
+              <div>
+                <div style={{color:p.color,fontFamily:"Rajdhani,sans-serif",fontWeight:700,fontSize:14,letterSpacing:1}}>{p.name}</div>
+                <div style={{color:C.muted,fontSize:9,letterSpacing:1.5,fontFamily:"Rajdhani,sans-serif"}}>{p.sub}</div>
+              </div>
+            </div>
             <Pill label={p.soon?"Coming Soon":"Live"} color={p.soon?C.goldLight:p.color}/>
           </div>
         )}
