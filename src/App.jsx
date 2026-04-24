@@ -181,9 +181,9 @@ const CHIKASHA_PRODUCTS = [
 ];
 
 const CARE_PRODUCTS = [
-  {icon:"⊕",name:"CAREIQ",sub:"FQHC Community Health Intelligence",desc:"AI-powered preventive health intelligence for Federally Qualified Health Centers. Risk stratification, care gap identification, and patient health scoring — protecting 30M community health patients.",url:"https://care-iq-sable.vercel.app",color:C.tealLight,tags:["Risk Stratification","Care Gap Engine","UDS Reporting","HIPAA Aligned","Shield Protected"],live:true,featured:true,demo:true},
+  {icon:"⊕",name:"CAREIQ",sub:"FQHC Community Health Intelligence",desc:"AI-powered preventive health intelligence for Federally Qualified Health Centers. Risk stratification, care gap identification, and patient health scoring — protecting 30M community health patients.",url:"#",color:C.tealLight,tags:["Risk Stratification","Care Gap Engine","UDS Reporting","HIPAA Aligned","Shield Protected"],live:true,featured:true},
   {icon:"◉",name:"CARECIRCLE FQHC EDITION",sub:"Family Elder Care — CareIQ Connected",desc:"Family care coordination for elder households served by FQHCs. Medication tracking, care tasks, and family coordination — with CareIQ clinical data shared directly to the family view.",url:"#",color:C.tealLight,tags:["Medication Tracking","Care Tasks","CareIQ Built In","Shield Protected","Elder Care"],live:true},
-  {icon:"◈",name:"EDUIQ",sub:"Child Mental Health Early Warning",desc:"A student-centered intelligence platform connecting school, home, healthcare, and community services — with parents at the center of every decision. Identifies early warning signals across domains before a crisis develops.",url:"https://eduiq.vercel.app",color:C.tealBright,tags:["Parent Controlled","School Connected","Mental Health AI","Shield Protected","Early Warning"],live:true,demo:true},
+  {icon:"◈",name:"EDUIQ",sub:"Child Mental Health Early Warning",desc:"A student-centered intelligence platform connecting school, home, healthcare, and community services — with parents at the center of every decision. Identifies early warning signals across domains before a crisis develops.",url:"#",color:C.tealBright,tags:["Parent Controlled","School Connected","Mental Health AI","Shield Protected","Early Warning"],live:false,soon:true},
   {icon:"⬡",name:"SOVEREIGN PROMPT SHIELD",sub:"Shared Data Protection Layer",desc:"The same zero-knowledge cryptographic protection layer that powers Chikasha AI runs across every Care AI product. HIPAA-aligned, privacy-by-architecture, not just policy.",url:"https://chikashaai-promptshield12.vercel.app",color:C.tealLight,tags:["ZK Hash Layer","HIPAA Aligned","Browser Edge","PHI Protection","Shared Infrastructure"],live:true},
 ];
 
@@ -201,7 +201,7 @@ const ProductGrid = ({products,accentColor}) => (
               </div>
             </div>
             <div style={{display:"flex",flexDirection:"column",gap:8,alignItems:"flex-end"}}>
-              <Pill label={p.soon?"Coming Soon":p.demo?"Live Demo":"Live"} color={p.soon?C.goldLight:p.demo?C.tealBright:p.color}/>
+              <Pill label={p.soon?"Coming Soon":"Live"} color={p.soon?C.goldLight:p.color}/>
               {!p.soon&&<a href={p.url} target="_blank" rel="noopener noreferrer" className="btn-ghost">View Platform ↗</a>}
             </div>
           </div>
@@ -209,7 +209,7 @@ const ProductGrid = ({products,accentColor}) => (
         {!p.featured && (
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:14}}>
             <span style={{color:p.color,fontSize:24}}>{p.icon}</span>
-            <Pill label={p.soon?"Coming Soon":p.demo?"Live Demo":"Live"} color={p.soon?C.goldLight:p.demo?C.tealBright:p.color}/>
+            <Pill label={p.soon?"Coming Soon":"Live"} color={p.soon?C.goldLight:p.color}/>
           </div>
         )}
         <p style={{color:C.boneDim,fontSize:p.featured?14:12,lineHeight:1.8,marginBottom:p.featured?14:12,maxWidth:p.featured?580:"none"}}>{p.desc}</p>
@@ -419,7 +419,7 @@ const Footer = () => (
           <a key={label} href={url} target="_blank" rel="noopener noreferrer" style={{color:C.muted,textDecoration:"none",fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:1,textTransform:"uppercase",transition:"color 0.2s"}} onMouseEnter={e=>e.target.style.color=C.goldLight} onMouseLeave={e=>e.target.style.color=C.muted}>{label}</a>
         ))}
         <span style={{color:C.tealLight,fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:1,textTransform:"uppercase",margin:"0 8px"}}>⊕ Care AI</span>
-        {[["CareIQ","https://care-iq-sable.vercel.app"],["CareCircle","#"],["EduIQ","https://eduiq.vercel.app"]].map(([label,url])=>(
+        {[["CareIQ","#"],["CareCircle","#"],["EduIQ","#"]].map(([label,url])=>(
           <a key={label} href={url} style={{color:C.muted,textDecoration:"none",fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:1,textTransform:"uppercase",transition:"color 0.2s"}} onMouseEnter={e=>e.target.style.color=C.tealLight} onMouseLeave={e=>e.target.style.color=C.muted}>{label}</a>
         ))}
       </div>
