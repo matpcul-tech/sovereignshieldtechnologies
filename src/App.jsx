@@ -112,11 +112,14 @@ const Hero = ({setActiveTab}) => {
         <p className="fade-up-3" style={{fontSize:"clamp(15px,2.5vw,20px)",color:C.boneDim,lineHeight:1.85,marginBottom:36,fontWeight:300,maxWidth:660,margin:"0 auto 36px"}}>
           Sovereign Shield Technologies LLC builds two sovereign platforms — Chikasha AI for tribal nations and Care AI for community health — both protected by the same data sovereignty architecture and owned entirely by the communities they serve.
         </p>
+
+        {/* Two platform CTAs */}
         <div className="fade-up-4" style={{display:"flex",gap:14,justifyContent:"center",flexWrap:"wrap",marginBottom:40}}>
           <button onClick={()=>scrollTo('chikasha')} className="btn-primary" style={{fontSize:13}}>◈ Chikasha AI Platform</button>
           <button onClick={()=>scrollTo('care')} className="btn-care" style={{fontSize:13}}>⊕ Care AI Platform</button>
           <a href="#contact" className="btn-secondary">Request Demo</a>
         </div>
+
         <div className="fade-up-4" style={{display:"flex",gap:32,justifyContent:"center",flexWrap:"wrap"}}>
           {[{v:"574",l:"Tribal Nations"},{v:"7",l:"Live Products"},{v:"100%",l:"Data Sovereignty"},{v:"$0",l:"Data Sold"}].map((s,i)=>(
             <div key={i} style={{textAlign:"center"}}>
@@ -178,9 +181,9 @@ const CHIKASHA_PRODUCTS = [
 ];
 
 const CARE_PRODUCTS = [
-  {icon:"⊕",name:"CAREIQ",sub:"FQHC Community Health Intelligence",desc:"AI-powered preventive health intelligence for Federally Qualified Health Centers. Risk stratification, care gap identification, and patient health scoring — protecting 30M community health patients.",url:"https://care-iq-sable.vercel.app/",color:C.tealLight,tags:["Risk Stratification","Care Gap Engine","UDS Reporting","HIPAA Aligned","Shield Protected"],live:true,featured:true},
-  {icon:"◉",name:"CARECIRCLE FQHC EDITION",sub:"Family Elder Care — CareIQ Connected",desc:"Family care coordination for elder households served by FQHCs. Medication tracking, care tasks, and family coordination — with CareIQ clinical data shared directly to the family view.",url:"https://care-os1-gqmjbm3dx-matpcul-7370s-projects.vercel.app/",color:C.tealLight,tags:["Medication Tracking","Care Tasks","CareIQ Built In","Shield Protected","Elder Care"],live:true},
-  {icon:"◈",name:"EDUIQ",sub:"Child Mental Health Early Warning",desc:"A student-centered intelligence platform connecting school, home, healthcare, and community services — with parents at the center of every decision. Identifies early warning signals across domains before a crisis develops.",url:"https://eduiq.vercel.app",color:C.tealBright,tags:["Parent Controlled","School Connected","Mental Health AI","Shield Protected","Early Warning"],live:true},
+  {icon:"⊕",name:"CAREIQ",sub:"FQHC Community Health Intelligence",desc:"AI-powered preventive health intelligence for Federally Qualified Health Centers. Risk stratification, care gap identification, and patient health scoring — protecting 30M community health patients.",url:"#",color:C.tealLight,tags:["Risk Stratification","Care Gap Engine","UDS Reporting","HIPAA Aligned","Shield Protected"],live:true,featured:true},
+  {icon:"◉",name:"CARECIRCLE FQHC EDITION",sub:"Family Elder Care — CareIQ Connected",desc:"Family care coordination for elder households served by FQHCs. Medication tracking, care tasks, and family coordination — with CareIQ clinical data shared directly to the family view.",url:"#",color:C.tealLight,tags:["Medication Tracking","Care Tasks","CareIQ Built In","Shield Protected","Elder Care"],live:true},
+  {icon:"◈",name:"EDUIQ",sub:"Child Mental Health Early Warning",desc:"A student-centered intelligence platform connecting school, home, healthcare, and community services — with parents at the center of every decision. Identifies early warning signals across domains before a crisis develops.",url:"#",color:C.tealBright,tags:["Parent Controlled","School Connected","Mental Health AI","Shield Protected","Early Warning"],live:false,soon:true},
   {icon:"⬡",name:"SOVEREIGN PROMPT SHIELD",sub:"Shared Data Protection Layer",desc:"The same zero-knowledge cryptographic protection layer that powers Chikasha AI runs across every Care AI product. HIPAA-aligned, privacy-by-architecture, not just policy.",url:"https://chikashaai-promptshield12.vercel.app",color:C.tealLight,tags:["ZK Hash Layer","HIPAA Aligned","Browser Edge","PHI Protection","Shared Infrastructure"],live:true},
 ];
 
@@ -205,13 +208,7 @@ const ProductGrid = ({products,accentColor}) => (
         )}
         {!p.featured && (
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:14}}>
-            <div style={{display:"flex",alignItems:"center",gap:10}}>
-              <span style={{color:p.color,fontSize:24}}>{p.icon}</span>
-              <div>
-                <div style={{color:p.color,fontFamily:"Rajdhani,sans-serif",fontWeight:700,fontSize:14,letterSpacing:1}}>{p.name}</div>
-                <div style={{color:C.muted,fontSize:9,letterSpacing:1.5,fontFamily:"Rajdhani,sans-serif"}}>{p.sub}</div>
-              </div>
-            </div>
+            <span style={{color:p.color,fontSize:24}}>{p.icon}</span>
             <Pill label={p.soon?"Coming Soon":"Live"} color={p.soon?C.goldLight:p.color}/>
           </div>
         )}
@@ -235,6 +232,8 @@ const Products = ({activeTab,setActiveTab}) => (
         <div style={{color:C.greenLight,fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:3,textTransform:"uppercase",marginBottom:12}}>Live Platform</div>
         <h2 style={{fontFamily:"Cormorant Garamond,serif",fontSize:"clamp(28px,4vw,44px)",fontWeight:300,color:C.bone,marginBottom:14}}>Two Sovereign Platforms. One Architecture.</h2>
         <p style={{color:C.boneDim,fontSize:16,maxWidth:580,margin:"0 auto 32px",lineHeight:1.8}}>Select a platform to explore the products built under it. All products share the Sovereign Prompt Shield data protection layer.</p>
+
+        {/* TAB SWITCHER */}
         <div style={{display:"inline-flex",background:C.panel,border:`1px solid ${C.border}`,borderRadius:14,padding:6,gap:6}}>
           <button onClick={()=>setActiveTab('chikasha')} style={{padding:"10px 24px",borderRadius:10,fontFamily:"Rajdhani,sans-serif",fontWeight:700,fontSize:12,letterSpacing:1.5,textTransform:"uppercase",cursor:"pointer",transition:"all 0.25s",background:activeTab==='chikasha'?`linear-gradient(135deg,${C.forest},${C.green})`:"transparent",color:activeTab==='chikasha'?C.cream:C.boneDim,border:activeTab==='chikasha'?`1px solid ${C.greenLight}50`:"1px solid transparent",boxShadow:activeTab==='chikasha'?`0 0 16px ${C.green}40`:"none"}}>
             ◈ Chikasha AI
@@ -245,6 +244,7 @@ const Products = ({activeTab,setActiveTab}) => (
         </div>
       </div>
 
+      {/* CHIKASHA AI TAB */}
       {activeTab==='chikasha'&&(
         <div className="tab-content">
           <div style={{background:`linear-gradient(135deg,${C.greenGlow},${C.forest}30)`,border:`1px solid ${C.greenLight}30`,borderRadius:14,padding:"16px 20px",marginBottom:24,display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:12}}>
@@ -258,6 +258,7 @@ const Products = ({activeTab,setActiveTab}) => (
         </div>
       )}
 
+      {/* CARE AI TAB */}
       {activeTab==='care'&&(
         <div className="tab-content">
           <div style={{background:`linear-gradient(135deg,${C.teal}20,${C.teal}10)`,border:`1px solid ${C.tealLight}30`,borderRadius:14,padding:"16px 20px",marginBottom:24,display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:12}}>
@@ -265,7 +266,7 @@ const Products = ({activeTab,setActiveTab}) => (
               <div style={{color:C.tealBright,fontFamily:"Rajdhani,sans-serif",fontWeight:700,fontSize:16,letterSpacing:1,marginBottom:4}}>⊕ Care AI</div>
               <div style={{color:C.boneDim,fontSize:13,lineHeight:1.6}}>Community health intelligence for FQHCs, elder care families, and schools — protecting 30M patients with the same sovereign data architecture. Built for the communities that need it most.</div>
             </div>
-            <Pill label="4 Products · 3 Live" color={C.tealLight}/>
+            <Pill label="4 Products · 2 Live" color={C.tealLight}/>
           </div>
           <ProductGrid products={CARE_PRODUCTS} accentColor={C.tealLight}/>
         </div>
@@ -414,21 +415,12 @@ const Footer = () => (
       </div>
       <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
         <span style={{color:C.greenLight,fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:1,textTransform:"uppercase",marginRight:8}}>◈ Chikasha AI</span>
-        {[
-          ["Health OS","https://sovereignhealthcareos.com"],
-          ["Language OS","https://chikashaailanguageos.vercel.app"],
-          ["Shield","https://chikashaai-promptshield12.vercel.app"],
-          ["CFM","https://chikashcfm.vercel.app"],
-        ].map(([label,url])=>(
+        {[["Health OS","https://sovereignhealthcareos.com"],["Language OS","https://chikashaailanguageos.vercel.app"],["Shield","https://chikashaai-promptshield12.vercel.app"],["CFM","https://chikashcfm.vercel.app"]].map(([label,url])=>(
           <a key={label} href={url} target="_blank" rel="noopener noreferrer" style={{color:C.muted,textDecoration:"none",fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:1,textTransform:"uppercase",transition:"color 0.2s"}} onMouseEnter={e=>e.target.style.color=C.goldLight} onMouseLeave={e=>e.target.style.color=C.muted}>{label}</a>
         ))}
         <span style={{color:C.tealLight,fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:1,textTransform:"uppercase",margin:"0 8px"}}>⊕ Care AI</span>
-        {[
-          ["CareIQ","https://care-iq-sable.vercel.app/"],
-          ["CareCircle","https://care-os1-gqmjbm3dx-matpcul-7370s-projects.vercel.app/"],
-          ["EduIQ","https://eduiq.vercel.app"],
-        ].map(([label,url])=>(
-          <a key={label} href={url} target="_blank" rel="noopener noreferrer" style={{color:C.muted,textDecoration:"none",fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:1,textTransform:"uppercase",transition:"color 0.2s"}} onMouseEnter={e=>e.target.style.color=C.tealLight} onMouseLeave={e=>e.target.style.color=C.muted}>{label}</a>
+        {[["CareIQ","#"],["CareCircle","#"],["EduIQ","#"]].map(([label,url])=>(
+          <a key={label} href={url} style={{color:C.muted,textDecoration:"none",fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:1,textTransform:"uppercase",transition:"color 0.2s"}} onMouseEnter={e=>e.target.style.color=C.tealLight} onMouseLeave={e=>e.target.style.color=C.muted}>{label}</a>
         ))}
       </div>
       <div style={{color:C.muted,fontSize:10,fontFamily:"Rajdhani,sans-serif",letterSpacing:1}}>© 2026 SOVEREIGN SHIELD TECHNOLOGIES LLC</div>
