@@ -63,7 +63,6 @@ const Pill = ({label,color=C.greenLight}) => (
   </span>
 );
 
-// ── NAV ───────────────────────────────────────────────────────────────────────
 const Nav = ({activeTab,setActiveTab}) => {
   const [scrolled,setScrolled]=useState(false);
   useEffect(()=>{const fn=()=>setScrolled(window.scrollY>40);window.addEventListener("scroll",fn);return()=>window.removeEventListener("scroll",fn)},[]);
@@ -94,7 +93,6 @@ const Nav = ({activeTab,setActiveTab}) => {
   );
 };
 
-// ── HERO ──────────────────────────────────────────────────────────────────────
 const Hero = ({setActiveTab}) => {
   const scrollTo = (tab) => { setActiveTab(tab); document.getElementById('products')?.scrollIntoView({behavior:'smooth'}); };
   return (
@@ -112,16 +110,13 @@ const Hero = ({setActiveTab}) => {
         <p className="fade-up-3" style={{fontSize:"clamp(15px,2.5vw,20px)",color:C.boneDim,lineHeight:1.85,marginBottom:36,fontWeight:300,maxWidth:660,margin:"0 auto 36px"}}>
           Sovereign Shield Technologies LLC builds two sovereign platforms — Chikasha AI for tribal nations and Care AI for community health — both protected by the same data sovereignty architecture and owned entirely by the communities they serve.
         </p>
-
-        {/* Two platform CTAs */}
         <div className="fade-up-4" style={{display:"flex",gap:14,justifyContent:"center",flexWrap:"wrap",marginBottom:40}}>
           <button onClick={()=>scrollTo('chikasha')} className="btn-primary" style={{fontSize:13}}>◈ Chikasha AI Platform</button>
           <button onClick={()=>scrollTo('care')} className="btn-care" style={{fontSize:13}}>⊕ Care AI Platform</button>
           <a href="#contact" className="btn-secondary">Request Demo</a>
         </div>
-
         <div className="fade-up-4" style={{display:"flex",gap:32,justifyContent:"center",flexWrap:"wrap"}}>
-          {[{v:"574",l:"Tribal Nations"},{v:"7",l:"Live Products"},{v:"100%",l:"Data Sovereignty"},{v:"$0",l:"Data Sold"}].map((s,i)=>(
+          {[{v:"574",l:"Tribal Nations"},{v:"8",l:"Live Products"},{v:"100%",l:"Data Sovereignty"},{v:"$0",l:"Data Sold"}].map((s,i)=>(
             <div key={i} style={{textAlign:"center"}}>
               <div style={{color:C.goldLight,fontFamily:"Rajdhani,sans-serif",fontSize:28,fontWeight:700,letterSpacing:-1}}>{s.v}</div>
               <div style={{color:C.muted,fontSize:10,letterSpacing:2,fontFamily:"Rajdhani,sans-serif",textTransform:"uppercase"}}>{s.l}</div>
@@ -133,7 +128,6 @@ const Hero = ({setActiveTab}) => {
   );
 };
 
-// ── MISSION ───────────────────────────────────────────────────────────────────
 const Mission = () => (
   <section id="mission" style={{padding:"80px 24px",position:"relative",zIndex:1}}>
     <div style={{maxWidth:900,margin:"0 auto"}}>
@@ -170,24 +164,23 @@ const Mission = () => (
   </section>
 );
 
-// ── PRODUCTS ──────────────────────────────────────────────────────────────────
 const CHIKASHA_PRODUCTS = [
   {icon:"◈",name:"CHIKASHA AI OS",sub:"Unified Sovereign Intelligence Platform",desc:"The command center. All sovereign systems unified under one interface — accessible to Nation Leadership, Healthcare providers, and Developers through distinct audience modes.",url:"https://chikasha-ai.vercel.app",color:C.goldLight,tags:["Nation Leadership Mode","Healthcare Mode","Developer Mode","6 Integrated Tabs","Shield Protected"],live:true,featured:true},
   {icon:"⊕",name:"CHIKASHA HEALTH OS",sub:"Sovereign Preventive Health Platform",desc:"Precision preventive diagnostics, longitudinal health records, and AI care coordination — all within sovereign data walls. Zero PHI transmitted externally. Wearable connected.",url:"https://sovereignhealthcareos.com",color:C.greenLight,tags:["7-Tab Dashboard","Biomarker Tracking","Risk Engine","Wearable Connected","ZK Protected"],live:true},
   {icon:"◉",name:"CHIKASHA FOUNDATIONAL MODEL",sub:"Sovereign AI — Four Modes",desc:"The Nation's own AI with four distinct modes: Citizen, Healthcare, Language, and Leadership. Shield-protected on every query. Built to be routed to sovereign infrastructure.",url:"https://chikashcfm.vercel.app",color:C.greenLight,tags:["Citizen Mode","Healthcare Mode","Language Mode","Leadership Mode","Shield Active"],live:true},
   {icon:"◎",name:"CHIKASHA LANGUAGE OS",sub:"Sovereign Language Preservation",desc:"AI-powered Chikashshanompa' dictionary, phrase learning, cultural knowledge, and oral history preservation — Shield-protected so the language never leaves sovereign control.",url:"https://chikashaailanguageos.vercel.app",color:C.goldBright,tags:["Dictionary AI","Phrase Builder","Cultural Knowledge","Oral History","ZK Protected"],live:true},
   {icon:"⬡",name:"SOVEREIGN PROMPT SHIELD",sub:"Data Protection Layer",desc:"Intercepts every AI query before transmission. Detects PII, tribal enrollment data, and Chikashshanompa' terms — hashing them at the browser edge under tribal governance.",url:"https://chikashaai-promptshield12.vercel.app",color:C.goldLight,tags:["ZK Hash Layer","HIPAA Compliant","Real-time Detection","Tribal Governance","Browser Edge"],live:true},
-  {icon:"◉",name:"CARECIRCLE SOVEREIGN EDITION",sub:"Family Elder Care — Tribal Health Connected",desc:"Family care coordination for Chickasaw elder households. Medication tracking, appointments, and care tasks — with the Sovereign Health OS clinical view built directly in for the family.",url:"#",color:C.greenLight,tags:["Medication Tracking","Appointment Sync","Health OS Connected","Shield Protected","Elder Care"],live:false,soon:true},
+  {icon:"◉",name:"CARECIRCLE SOVEREIGN EDITION",sub:"Family Elder Care — Tribal Health Connected",desc:"Family care coordination for Chickasaw elder households. Medication tracking, appointments, and care tasks — with the Sovereign Health OS clinical view built directly in for the family.",url:"https://carecircle-sovereign.vercel.app",color:C.greenLight,tags:["Medication Tracking","Appointment Sync","Health OS Connected","Shield Protected","Elder Care"],live:true},
 ];
 
 const CARE_PRODUCTS = [
-  {icon:"⊕",name:"CAREIQ",sub:"FQHC Community Health Intelligence",desc:"AI-powered preventive health intelligence for Federally Qualified Health Centers. Risk stratification, care gap identification, and patient health scoring — protecting 30M community health patients.",url:"#",color:C.tealLight,tags:["Risk Stratification","Care Gap Engine","UDS Reporting","HIPAA Aligned","Shield Protected"],live:true,featured:true},
-  {icon:"◉",name:"CARECIRCLE FQHC EDITION",sub:"Family Elder Care — CareIQ Connected",desc:"Family care coordination for elder households served by FQHCs. Medication tracking, care tasks, and family coordination — with CareIQ clinical data shared directly to the family view.",url:"#",color:C.tealLight,tags:["Medication Tracking","Care Tasks","CareIQ Built In","Shield Protected","Elder Care"],live:true},
+  {icon:"⊕",name:"CAREIQ",sub:"FQHC Community Health Intelligence",desc:"AI-powered preventive health intelligence for Federally Qualified Health Centers. Risk stratification, care gap identification, and patient health scoring — protecting 30M community health patients.",url:"https://care-iq-sable.vercel.app",color:C.tealLight,tags:["Risk Stratification","Care Gap Engine","UDS Reporting","HIPAA Aligned","Shield Protected"],live:true,featured:true},
+  {icon:"◉",name:"CARECIRCLE FQHC EDITION",sub:"Family Elder Care — CareIQ Connected",desc:"Family care coordination for elder households served by FQHCs. Medication tracking, care tasks, and family coordination — with CareIQ clinical data shared directly to the family view.",url:"https://care-os1.vercel.app",color:C.tealLight,tags:["Medication Tracking","Care Tasks","CareIQ Built In","Shield Protected","Elder Care"],live:true},
   {icon:"◈",name:"EDUIQ",sub:"Child Mental Health Early Warning",desc:"A student-centered intelligence platform connecting school, home, healthcare, and community services — with parents at the center of every decision. Identifies early warning signals across domains before a crisis develops.",url:"https://eduiq.vercel.app",color:C.tealBright,tags:["Parent Controlled","School Connected","Mental Health AI","Shield Protected","Early Warning"],live:true},
   {icon:"⬡",name:"SOVEREIGN PROMPT SHIELD",sub:"Shared Data Protection Layer",desc:"The same zero-knowledge cryptographic protection layer that powers Chikasha AI runs across every Care AI product. HIPAA-aligned, privacy-by-architecture, not just policy.",url:"https://chikashaai-promptshield12.vercel.app",color:C.tealLight,tags:["ZK Hash Layer","HIPAA Aligned","Browser Edge","PHI Protection","Shared Infrastructure"],live:true},
 ];
 
-const ProductGrid = ({products,accentColor}) => (
+const ProductGrid = ({products}) => (
   <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:16}}>
     {products.map((p,i)=>(
       <div key={i} className="product-card" style={{"--accent":p.color,gridColumn:p.featured?"1 / -1":"auto"}}>
@@ -201,8 +194,8 @@ const ProductGrid = ({products,accentColor}) => (
               </div>
             </div>
             <div style={{display:"flex",flexDirection:"column",gap:8,alignItems:"flex-end"}}>
-              <Pill label={p.soon?"Coming Soon":"Live"} color={p.soon?C.goldLight:p.color}/>
-              {!p.soon&&<a href={p.url} target="_blank" rel="noopener noreferrer" className="btn-ghost">View Platform ↗</a>}
+              <Pill label="Live" color={p.color}/>
+              <a href={p.url} target="_blank" rel="noopener noreferrer" className="btn-ghost">View Platform ↗</a>
             </div>
           </div>
         )}
@@ -215,7 +208,7 @@ const ProductGrid = ({products,accentColor}) => (
                 <div style={{color:C.muted,fontSize:9,letterSpacing:1.5,fontFamily:"Rajdhani,sans-serif"}}>{p.sub}</div>
               </div>
             </div>
-            <Pill label={p.soon?"Coming Soon":"Live"} color={p.soon?C.goldLight:p.color}/>
+            <Pill label="Live" color={p.color}/>
           </div>
         )}
         <p style={{color:C.boneDim,fontSize:p.featured?14:12,lineHeight:1.8,marginBottom:p.featured?14:12,maxWidth:p.featured?580:"none"}}>{p.desc}</p>
@@ -224,8 +217,7 @@ const ProductGrid = ({products,accentColor}) => (
             <span key={j} style={{background:C.surface,border:`1px solid ${C.border}`,color:C.muted,padding:"3px 8px",borderRadius:5,fontSize:9,fontFamily:"Rajdhani,sans-serif",letterSpacing:0.5}}>{t}</span>
           ))}
         </div>
-        {!p.featured&&!p.soon&&<a href={p.url} target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{fontSize:10,padding:"7px 14px"}}>View Live ↗</a>}
-        {p.soon&&<span style={{fontFamily:"Rajdhani,sans-serif",fontSize:10,color:C.goldLight,letterSpacing:1}}>In Development</span>}
+        {!p.featured&&<a href={p.url} target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{fontSize:10,padding:"7px 14px"}}>View Live ↗</a>}
       </div>
     ))}
   </div>
@@ -238,8 +230,6 @@ const Products = ({activeTab,setActiveTab}) => (
         <div style={{color:C.greenLight,fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:3,textTransform:"uppercase",marginBottom:12}}>Live Platform</div>
         <h2 style={{fontFamily:"Cormorant Garamond,serif",fontSize:"clamp(28px,4vw,44px)",fontWeight:300,color:C.bone,marginBottom:14}}>Two Sovereign Platforms. One Architecture.</h2>
         <p style={{color:C.boneDim,fontSize:16,maxWidth:580,margin:"0 auto 32px",lineHeight:1.8}}>Select a platform to explore the products built under it. All products share the Sovereign Prompt Shield data protection layer.</p>
-
-        {/* TAB SWITCHER */}
         <div style={{display:"inline-flex",background:C.panel,border:`1px solid ${C.border}`,borderRadius:14,padding:6,gap:6}}>
           <button onClick={()=>setActiveTab('chikasha')} style={{padding:"10px 24px",borderRadius:10,fontFamily:"Rajdhani,sans-serif",fontWeight:700,fontSize:12,letterSpacing:1.5,textTransform:"uppercase",cursor:"pointer",transition:"all 0.25s",background:activeTab==='chikasha'?`linear-gradient(135deg,${C.forest},${C.green})`:"transparent",color:activeTab==='chikasha'?C.cream:C.boneDim,border:activeTab==='chikasha'?`1px solid ${C.greenLight}50`:"1px solid transparent",boxShadow:activeTab==='chikasha'?`0 0 16px ${C.green}40`:"none"}}>
             ◈ Chikasha AI
@@ -250,7 +240,6 @@ const Products = ({activeTab,setActiveTab}) => (
         </div>
       </div>
 
-      {/* CHIKASHA AI TAB */}
       {activeTab==='chikasha'&&(
         <div className="tab-content">
           <div style={{background:`linear-gradient(135deg,${C.greenGlow},${C.forest}30)`,border:`1px solid ${C.greenLight}30`,borderRadius:14,padding:"16px 20px",marginBottom:24,display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:12}}>
@@ -258,13 +247,12 @@ const Products = ({activeTab,setActiveTab}) => (
               <div style={{color:C.goldBright,fontFamily:"Rajdhani,sans-serif",fontWeight:700,fontSize:16,letterSpacing:1,marginBottom:4}}>◈ Chikasha AI</div>
               <div style={{color:C.boneDim,fontSize:13,lineHeight:1.6}}>Sovereign AI infrastructure for tribal nations — cultural preservation, health intelligence, citizen services, and language protection. Built by an enrolled Chickasaw citizen for the 574 nations.</div>
             </div>
-            <Pill label="6 Products · 5 Live" color={C.greenLight}/>
+            <Pill label="6 Products · All Live" color={C.greenLight}/>
           </div>
-          <ProductGrid products={CHIKASHA_PRODUCTS} accentColor={C.greenLight}/>
+          <ProductGrid products={CHIKASHA_PRODUCTS}/>
         </div>
       )}
 
-      {/* CARE AI TAB */}
       {activeTab==='care'&&(
         <div className="tab-content">
           <div style={{background:`linear-gradient(135deg,${C.teal}20,${C.teal}10)`,border:`1px solid ${C.tealLight}30`,borderRadius:14,padding:"16px 20px",marginBottom:24,display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:12}}>
@@ -272,16 +260,15 @@ const Products = ({activeTab,setActiveTab}) => (
               <div style={{color:C.tealBright,fontFamily:"Rajdhani,sans-serif",fontWeight:700,fontSize:16,letterSpacing:1,marginBottom:4}}>⊕ Care AI</div>
               <div style={{color:C.boneDim,fontSize:13,lineHeight:1.6}}>Community health intelligence for FQHCs, elder care families, and schools — protecting 30M patients with the same sovereign data architecture. Built for the communities that need it most.</div>
             </div>
-            <Pill label="4 Products · 2 Live" color={C.tealLight}/>
+            <Pill label="4 Products · All Live" color={C.tealLight}/>
           </div>
-          <ProductGrid products={CARE_PRODUCTS} accentColor={C.tealLight}/>
+          <ProductGrid products={CARE_PRODUCTS}/>
         </div>
       )}
     </div>
   </section>
 );
 
-// ── TECHNOLOGY ────────────────────────────────────────────────────────────────
 const Technology = () => (
   <section id="technology" style={{padding:"80px 24px",position:"relative",zIndex:1}}>
     <div style={{maxWidth:900,margin:"0 auto"}}>
@@ -312,7 +299,6 @@ const Technology = () => (
   </section>
 );
 
-// ── PARTNERS ──────────────────────────────────────────────────────────────────
 const Partners = () => (
   <section id="partners" style={{padding:"80px 24px",background:`${C.surface}80`,position:"relative",zIndex:1}}>
     <div style={{maxWidth:900,margin:"0 auto"}}>
@@ -360,7 +346,6 @@ const Partners = () => (
   </section>
 );
 
-// ── CONTACT ───────────────────────────────────────────────────────────────────
 const Contact = () => {
   const [form,setForm]=useState({name:"",org:"",email:"",type:"Tribal Nation",message:""});
   const [sent,setSent]=useState(false);
@@ -411,7 +396,6 @@ const Contact = () => {
   );
 };
 
-// ── FOOTER ────────────────────────────────────────────────────────────────────
 const Footer = () => (
   <footer style={{borderTop:`1px solid ${C.border}`,padding:"32px 24px",position:"relative",zIndex:1}}>
     <div style={{maxWidth:900,margin:"0 auto",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:16}}>
@@ -421,12 +405,12 @@ const Footer = () => (
       </div>
       <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
         <span style={{color:C.greenLight,fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:1,textTransform:"uppercase",marginRight:8}}>◈ Chikasha AI</span>
-        {[["Health OS","https://sovereignhealthcareos.com"],["Language OS","https://chikashaailanguageos.vercel.app"],["Shield","https://chikashaai-promptshield12.vercel.app"],["CFM","https://chikashcfm.vercel.app"]].map(([label,url])=>(
+        {[["Health OS","https://sovereignhealthcareos.com"],["Language OS","https://chikashaailanguageos.vercel.app"],["Shield","https://chikashaai-promptshield12.vercel.app"],["CFM","https://chikashcfm.vercel.app"],["CareCircle","https://carecircle-sovereign.vercel.app"]].map(([label,url])=>(
           <a key={label} href={url} target="_blank" rel="noopener noreferrer" style={{color:C.muted,textDecoration:"none",fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:1,textTransform:"uppercase",transition:"color 0.2s"}} onMouseEnter={e=>e.target.style.color=C.goldLight} onMouseLeave={e=>e.target.style.color=C.muted}>{label}</a>
         ))}
         <span style={{color:C.tealLight,fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:1,textTransform:"uppercase",margin:"0 8px"}}>⊕ Care AI</span>
-        {[["CareIQ","#"],["CareCircle","#"],["EduIQ","#"]].map(([label,url])=>(
-          <a key={label} href={url} style={{color:C.muted,textDecoration:"none",fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:1,textTransform:"uppercase",transition:"color 0.2s"}} onMouseEnter={e=>e.target.style.color=C.tealLight} onMouseLeave={e=>e.target.style.color=C.muted}>{label}</a>
+        {[["CareIQ","https://care-iq-sable.vercel.app"],["CareCircle FQHC","https://care-os1.vercel.app"],["EduIQ","https://eduiq.vercel.app"]].map(([label,url])=>(
+          <a key={label} href={url} target="_blank" rel="noopener noreferrer" style={{color:C.muted,textDecoration:"none",fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:1,textTransform:"uppercase",transition:"color 0.2s"}} onMouseEnter={e=>e.target.style.color=C.tealLight} onMouseLeave={e=>e.target.style.color=C.muted}>{label}</a>
         ))}
       </div>
       <div style={{color:C.muted,fontSize:10,fontFamily:"Rajdhani,sans-serif",letterSpacing:1}}>© 2026 SOVEREIGN SHIELD TECHNOLOGIES LLC</div>
@@ -434,7 +418,6 @@ const Footer = () => (
   </footer>
 );
 
-// ── APP ───────────────────────────────────────────────────────────────────────
 export default function SovereignShieldSite() {
   const [activeTab,setActiveTab]=useState('chikasha');
   return (
@@ -451,4 +434,4 @@ export default function SovereignShieldSite() {
       <Footer/>
     </div>
   );
-    }
+}
