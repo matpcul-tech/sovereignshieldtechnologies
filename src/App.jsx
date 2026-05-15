@@ -694,7 +694,7 @@ const Footer = () => (
 const OB_STEPS = [
   {id:"email",q:"Create your sovereign health identity",sub:"Your data is encrypted from the moment you enter. Never reaches a commercial AI server in readable form.",type:"email"},
   {id:"tribal",q:"Are you a citizen of a tribal nation?",sub:"This unlocks your cultural sovereignty layer -- language tools, governance resources, and culturally grounded health insights.",type:"choice",opts:[{icon:"🦅",label:"Yes -- Chickasaw Nation"},{icon:"🌿",label:"Yes -- other tribal nation"},{icon:"🌎",label:"No -- general public"}]},
-  {id:"wearable",q:"Do you have a wearable device?",sub:"Connect any wearable to stream live biometrics into your sovereign health dashboard.",type:"choice",opts:[{icon:"⌚",label:"Apple Watch"},{icon:"💍",label:"Oura Ring"},{icon:"📿",label:"Fitbit or Garmin"},{icon:"❌",label:"No wearable yet"}]},
+  {id:"wearable",q:"Do you have a wearable device?",sub:"SovereignOne connects to any wearable that syncs to Apple Health or Google Fit -- Apple Watch, Oura Ring, Fitbit, Garmin, Whoop, Samsung Galaxy Watch, and more.",type:"choice",opts:[{icon:"⌚",label:"Yes -- Apple Health compatible"},{icon:"🤖",label:"Yes -- Google Fit compatible"},{icon:"💍",label:"Yes -- Oura Ring or Whoop"},{icon:"❌",label:"No wearable yet"}]},
   {id:"care",q:"Do you have a primary care provider or FQHC?",sub:"If your clinic uses CareIQ your clinical records will sync securely to your dashboard.",type:"choice",opts:[{icon:"🏥",label:"Yes -- sync my clinical records"},{icon:"👤",label:"No -- self-directed health only"}]},
 ];
 
