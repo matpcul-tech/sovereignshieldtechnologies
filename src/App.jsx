@@ -595,7 +595,7 @@ const Founder = () => (
 
           <div>
             <blockquote style={{fontFamily:"Cormorant Garamond,serif",fontSize:"clamp(16px,2.5vw,22px)",fontStyle:"italic",color:C.bone,lineHeight:1.6,borderLeft:`3px solid ${C.goldLight}`,paddingLeft:20,marginBottom:24}}>
-              "I build luxury big-city longevity healthcare for the sovereign and urban communities."
+              "I build luxury big-city longevity healthcare for the sovereign and the urban."
             </blockquote>
             <p style={{color:C.boneDim,fontSize:14,lineHeight:1.9,marginBottom:16}}>
               Sovereign Shield Technologies exists because tribal nations and FQHCs deserve AI health infrastructure that was built for them — not extracted from them. Every product in this stack is governed by AILT principles, protected by Sovereign Prompt Shield, and designed to keep tribal member data sovereign from the moment it enters the system.
