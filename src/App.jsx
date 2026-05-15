@@ -96,7 +96,7 @@ const Nav = ({activeTab,setActiveTab}) => {
         <button onClick={()=>scrollTo('care')} style={{padding:"7px 18px",borderRadius:24,fontFamily:"Rajdhani,sans-serif",fontWeight:700,fontSize:11,letterSpacing:1.5,textTransform:"uppercase",cursor:"pointer",transition:"all 0.2s",background:activeTab==='care'?`linear-gradient(135deg,${C.teal},${C.tealLight})`:"transparent",color:activeTab==='care'?C.cream:C.tealLight,border:`1px solid ${C.tealLight}50`}}>
           ⊕ Care AI
         </button>
-        <a href="https://sovereignhealthcareos.com" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{padding:"8px 18px",fontSize:11}}>Enter SovereignOne ↗</a>
+        <a href="/onboard" className="btn-primary" style={{padding:"8px 18px",fontSize:11}}>Enter SovereignOne ↗</a>
       </div>
     </nav>
   );
@@ -124,7 +124,7 @@ const Hero = ({setActiveTab}) => {
           "Luxury big-city longevity healthcare for the sovereign and the urban."
         </p>
         <div className="fade-up-4" style={{display:"flex",gap:14,justifyContent:"center",flexWrap:"wrap",marginBottom:40}}>
-          <a href="https://sovereignhealthcareos.com" target="_blank" rel="noopener noreferrer" className="btn-sovereign" style={{fontSize:13}}>⬡ Enter SovereignOne</a>
+          <a href="/onboard" className="btn-sovereign" style={{fontSize:13}}>⬡ Enter SovereignOne</a>
           <button onClick={()=>scrollTo('chikasha')} className="btn-primary" style={{fontSize:13}}>◈ Chikasha AI Platform</button>
           <button onClick={()=>scrollTo('care')} className="btn-care" style={{fontSize:13}}>⊕ Care AI Platform</button>
           <a href="#contact" className="btn-secondary">Request Demo</a>
@@ -595,7 +595,7 @@ const Founder = () => (
 
           <div>
             <blockquote style={{fontFamily:"Cormorant Garamond,serif",fontSize:"clamp(16px,2.5vw,22px)",fontStyle:"italic",color:C.bone,lineHeight:1.6,borderLeft:`3px solid ${C.goldLight}`,paddingLeft:20,marginBottom:24}}>
-              "I build luxury big-city longevity healthcare for the sovereign and the urban."
+              "I build luxury big-city longevity healthcare for the sovereign and urban communities."
             </blockquote>
             <p style={{color:C.boneDim,fontSize:14,lineHeight:1.9,marginBottom:16}}>
               Sovereign Shield Technologies exists because tribal nations and FQHCs deserve AI health infrastructure that was built for them — not extracted from them. Every product in this stack is governed by AILT principles, protected by Sovereign Prompt Shield, and designed to keep tribal member data sovereign from the moment it enters the system.
@@ -690,8 +690,115 @@ const Footer = () => (
   </footer>
 );
 
+// ── SOVEREIGNONE ONBOARDING FLOW ─────────────────────────────
+const OB_STEPS = [
+  {id:"email",q:"Create your sovereign health identity",sub:"Your data is encrypted from the moment you enter. Never reaches a commercial AI server in readable form.",type:"email"},
+  {id:"tribal",q:"Are you a citizen of a tribal nation?",sub:"This unlocks your cultural sovereignty layer -- language tools, governance resources, and culturally grounded health insights.",type:"choice",opts:[{icon:"🦅",label:"Yes -- Chickasaw Nation"},{icon:"🌿",label:"Yes -- other tribal nation"},{icon:"🌎",label:"No -- general public"}]},
+  {id:"wearable",q:"Do you have a wearable device?",sub:"Connect any wearable to stream live biometrics into your sovereign health dashboard.",type:"choice",opts:[{icon:"⌚",label:"Apple Watch"},{icon:"💍",label:"Oura Ring"},{icon:"📿",label:"Fitbit or Garmin"},{icon:"❌",label:"No wearable yet"}]},
+  {id:"care",q:"Do you have a primary care provider or FQHC?",sub:"If your clinic uses CareIQ your clinical records will sync securely to your dashboard.",type:"choice",opts:[{icon:"🏥",label:"Yes -- sync my clinical records"},{icon:"👤",label:"No -- self-directed health only"}]},
+];
+
+const obCss = `
+  .ob-wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;background:#040810;position:relative}
+  .ob-wrap::before{content:'';position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#D4A820,#1A90B0,#D4A820);z-index:10}
+  .ob-card{background:#0D1828;border:1px solid #182A3E;border-radius:20px;padding:28px 24px;width:100%;max-width:420px;position:relative;overflow:hidden}
+  .ob-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#D4A820,#1A90B0)}
+  .ob-prog{height:3px;background:#182A3E;border-radius:2px;margin-bottom:20px;overflow:hidden}
+  .ob-prog-fill{height:100%;background:linear-gradient(90deg,#D4A820,#1A90B0);transition:width .4s ease}
+  .ob-step{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#304858;margin-bottom:10px;font-family:Rajdhani,sans-serif;font-weight:600}
+  .ob-q{font-family:'Cormorant Garamond',serif;font-size:18px;color:#EEE0C0;margin-bottom:5px;line-height:1.4}
+  .ob-sub{font-size:12px;color:#304858;margin-bottom:18px;line-height:1.5}
+  .ob-input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #182A3E;background:#070D18;color:#EEE0C0;font-family:'Cormorant Garamond',serif;font-size:14px;outline:none;margin-bottom:12px;transition:border-color .2s}
+  .ob-input:focus{border-color:#D4A82080}
+  .ob-input::placeholder{color:#304858}
+  .ob-opt{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;border:1px solid #182A3E;background:#070D18;font-size:13px;color:#806A50;margin-bottom:8px;cursor:pointer;transition:all .15s;font-family:'Cormorant Garamond',serif}
+  .ob-opt:hover{border-color:#D4A82050;color:#D4A820}
+  .ob-opt.sel{background:rgba(212,168,32,0.08);border-color:#D4A820;color:#D4A820}
+  .ob-btn{width:100%;padding:14px;border-radius:10px;border:none;background:#D4A820;color:#040810;font-family:Rajdhani,sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;margin-top:4px;transition:opacity .2s}
+  .ob-btn:hover{opacity:.9}
+  .ob-btn:disabled{opacity:.4;cursor:not-allowed}
+  .ob-enc{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:14px}
+  .ob-enc-dot{width:5px;height:5px;border-radius:50%;background:#1A90B0;animation:obpulse 2s ease infinite}
+  .ob-enc-text{font-size:9px;color:#0A6070;letter-spacing:1px;text-transform:uppercase;font-family:Rajdhani,sans-serif}
+  @keyframes obpulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .dash-card{background:#0D1828;border:1px solid #182A3E;border-radius:14px;padding:18px;margin-bottom:10px;position:relative;overflow:hidden}
+  .dash-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+  .dash-card.gold::before{background:linear-gradient(90deg,#D4A820,#1A90B0)}
+  .vital-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  .vital-card{background:#101E30;border:1px solid #182A3E;border-radius:10px;padding:12px;text-align:center}
+`;
+
+function SovereignOneOnboard() {
+  const [step, setStep] = useState(0);
+  const [email, setEmail] = useState("");
+  const [answers, setAnswers] = useState({});
+  const [selected, setSelected] = useState(null);
+  const [done, setDone] = useState(false);
+
+  const current = OB_STEPS[step];
+  const pct = (step / OB_STEPS.length) * 100;
+
+  function next() {
+    if (current.type === "email" && !email.includes("@")) return;
+    if (current.type === "choice" && selected === null) return;
+    const newA = { ...answers, [current.id]: current.type === "email" ? email : current.opts[selected].label };
+    setAnswers(newA);
+    setSelected(null);
+    if (step + 1 >= OB_STEPS.length) { setDone(true); }
+    else { setStep(step + 1); }
+  }
+
+  if (done) return (
+    <div className="ob-wrap">
+      <style>{obCss}</style>
+      <div style={{fontFamily:"Cormorant Garamond,serif",fontSize:28,color:"#D4A820",textAlign:"center",marginBottom:8}}>Sovereign<span style={{color:"#1A90B0"}}>One</span></div>
+      <div style={{fontSize:11,color:"#304858",letterSpacing:1,marginBottom:32,textAlign:"center",fontFamily:"Rajdhani,sans-serif",textTransform:"uppercase"}}>Your health. Your data. Your sovereignty.</div>
+      <div className="ob-card" style={{textAlign:"center"}}>
+        <div style={{fontSize:48,marginBottom:16}}>⬡</div>
+        <div style={{fontFamily:"Cormorant Garamond,serif",fontSize:22,color:"#EEE0C0",marginBottom:10}}>Yakoke. Identity created.</div>
+        <div style={{fontSize:13,color:"#806A50",lineHeight:1.7,marginBottom:24}}>Your sovereign health identity is live. Your data is encrypted and sovereign from this moment forward.</div>
+        <a href="https://sovereignhealthcareos.com" className="ob-btn" style={{display:"block",textDecoration:"none",textAlign:"center",padding:"14px",borderRadius:10,background:"#D4A820",color:"#040810",fontFamily:"Rajdhani,sans-serif",fontWeight:700,fontSize:12,letterSpacing:1.5,textTransform:"uppercase"}}>
+          Enter Your Dashboard →
+        </a>
+        <div style={{marginTop:12}}><a href="/" style={{color:"#304858",fontSize:11,fontFamily:"Rajdhani,sans-serif",letterSpacing:1,textTransform:"uppercase",textDecoration:"none"}}>← Back to Sovereign Shield</a></div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="ob-wrap">
+      <style>{obCss}</style>
+      <div style={{fontFamily:"Cormorant Garamond,serif",fontSize:28,color:"#D4A820",textAlign:"center",marginBottom:4}}>Sovereign<span style={{color:"#1A90B0"}}>One</span></div>
+      <div style={{fontSize:11,color:"#304858",letterSpacing:1,marginBottom:28,textAlign:"center",fontFamily:"Rajdhani,sans-serif",textTransform:"uppercase"}}>Your health. Your data. Your sovereignty.</div>
+      <div className="ob-card">
+        <div className="ob-prog"><div className="ob-prog-fill" style={{width:`${pct}%`}}/></div>
+        <div className="ob-step">Step {step+1} of {OB_STEPS.length}</div>
+        <div className="ob-q">{current.q}</div>
+        <div className="ob-sub">{current.sub}</div>
+        {current.type === "email" && (
+          <input className="ob-input" type="email" placeholder="your@email.com" value={email} onChange={e=>setEmail(e.target.value)} onKeyDown={e=>e.key==="Enter"&&next()}/>
+        )}
+        {current.type === "choice" && current.opts.map((opt,i)=>(
+          <div key={opt.label} className={`ob-opt${selected===i?" sel":""}`} onClick={()=>setSelected(i)}>
+            <span style={{fontSize:18}}>{opt.icon}</span> {opt.label}
+          </div>
+        ))}
+        <button className="ob-btn" onClick={next} disabled={current.type==="email"?!email.includes("@"):selected===null}>
+          {step+1>=OB_STEPS.length ? "Enter My Sovereign Dashboard" : "Continue"}
+        </button>
+      </div>
+      <div className="ob-enc"><div className="ob-enc-dot"/><span className="ob-enc-text">AES-256-GCM · Zero-Knowledge · Sovereign Prompt Shield v5</span></div>
+      <div style={{marginTop:10}}><a href="/" style={{color:"#304858",fontSize:11,fontFamily:"Rajdhani,sans-serif",letterSpacing:1,textTransform:"uppercase",textDecoration:"none"}}>← Back to Sovereign Shield</a></div>
+    </div>
+  );
+}
+
 export default function SovereignShieldSite() {
   const [activeTab,setActiveTab]=useState('chikasha');
+  const path = window.location.pathname;
+
+  if (path === '/onboard') return <SovereignOneOnboard/>;
+
   return (
     <div style={{background:C.void,minHeight:"100vh",position:"relative",overflow:"hidden"}}>
       <style>{css}</style>
