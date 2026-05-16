@@ -179,7 +179,7 @@ const Mission = () => (
 );
 
 const HealthOSPreview = () => (
-  <img src="/healthos.png" alt="Chikasha Health OS — patient risk dashboard with biomarkers, risk score, and AI health narrative" loading="lazy" style={{display:"block",width:"100%",height:"auto"}}/>
+  <img src="/healthos-dashboard.png" alt="Chikasha Health OS — patient risk dashboard with biomarkers, risk score, and AI health narrative" loading="lazy" style={{display:"block",width:"100%",height:"auto"}}/>
 );
 
 const CHIKASHA_PRODUCTS = [
