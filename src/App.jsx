@@ -178,9 +178,13 @@ const Mission = () => (
   </section>
 );
 
+const HealthOSPreview = () => (
+  <img src="/healthos.png" alt="Sovereign Health OS — encrypted patient onboarding" loading="lazy" style={{display:"block",width:"100%",height:"auto"}}/>
+);
+
 const CHIKASHA_PRODUCTS = [
   {icon:"◈",name:"CHIKASHA AI OS",sub:"Unified Sovereign Intelligence Platform",desc:"The command center. All sovereign systems unified under one interface — accessible to Nation Leadership, Healthcare providers, and Developers through distinct audience modes.",url:"https://chikasha-ai.vercel.app",color:C.goldLight,tags:["Nation Leadership Mode","Healthcare Mode","Developer Mode","6 Integrated Tabs","Shield Protected"],live:true,featured:true},
-  {icon:"⊕",name:"CHIKASHA HEALTH OS",sub:"Sovereign Preventive Health Platform",desc:"Precision preventive diagnostics, longitudinal health records, and AI care coordination — all within sovereign data walls. Zero PHI transmitted externally. Wearable connected.",url:"https://sovereignhealthcareos.com",color:C.greenLight,tags:["7-Tab Dashboard","Biomarker Tracking","Risk Engine","Wearable Connected","ZK Protected"],live:true},
+  {icon:"⊕",name:"CHIKASHA HEALTH OS",sub:"Sovereign Preventive Health Platform",desc:"Precision preventive diagnostics, longitudinal health records, and AI care coordination — all within sovereign data walls. Zero PHI transmitted externally. Wearable connected.",url:"https://sovereignhealthcareos.com",color:C.greenLight,tags:["7-Tab Dashboard","Biomarker Tracking","Risk Engine","Wearable Connected","ZK Protected"],live:true,preview:HealthOSPreview},
   {icon:"◉",name:"CHIKASHA FOUNDATIONAL MODEL",sub:"Sovereign AI — Four Modes",desc:"The Nation's own AI with four distinct modes: Citizen, Healthcare, Language, and Leadership. Shield-protected on every query. Built to be routed to sovereign infrastructure.",url:"https://chikashcfm.vercel.app",color:C.greenLight,tags:["Citizen Mode","Healthcare Mode","Language Mode","Leadership Mode","Shield Active"],live:true},
   {icon:"◎",name:"CHIKASHA LANGUAGE OS",sub:"Sovereign Language Preservation",desc:"AI-powered Chikashshanompa' dictionary, phrase learning, cultural knowledge, and oral history preservation — Shield-protected so the language never leaves sovereign control.",url:"https://chikashaailanguageos.vercel.app",color:C.goldBright,tags:["Dictionary AI","Phrase Builder","Cultural Knowledge","Oral History","ZK Protected"],live:true},
   {icon:"⬡",name:"SOVEREIGN PROMPT SHIELD",sub:"Data Protection Layer — USPTO Patent Pending",desc:"Intercepts every AI query before transmission. Detects PII, tribal enrollment data, and Chikashshanompa' terms — hashing them at the browser edge under tribal governance.",url:"https://chikashaai-promptshield12.vercel.app",color:C.goldLight,tags:["ZK Hash Layer","HIPAA Aligned","Real-time Detection","Tribal Governance","USPTO Patent Pending"],live:true},
@@ -208,8 +212,15 @@ const AILT_PRODUCTS = [
 
 const ProductGrid = ({products}) => (
   <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:16}}>
-    {products.map((p,i)=>(
+    {products.map((p,i)=>{
+      const Preview = p.preview;
+      return (
       <div key={i} className="product-card" style={{"--accent":p.color,gridColumn:p.featured?"1 / -1":"auto"}}>
+        {Preview && (
+          <a href={p.url} target="_blank" rel="noopener noreferrer" style={{display:"block",marginBottom:16,borderRadius:10,overflow:"hidden",border:`1px solid ${C.border}`,background:C.surface}}>
+            <Preview/>
+          </a>
+        )}
         {p.featured && (
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:16,marginBottom:16}}>
             <div style={{display:"flex",alignItems:"center",gap:10}}>
@@ -245,7 +256,8 @@ const ProductGrid = ({products}) => (
         </div>
         {!p.featured&&<a href={p.url} target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{fontSize:10,padding:"7px 14px"}}>View Live ↗</a>}
       </div>
-    ))}
+      );
+    })}
   </div>
 );
 
