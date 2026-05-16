@@ -325,7 +325,12 @@ const Products = ({activeTab,setActiveTab}) => (
   </section>
 );
 
-const Flywheel = () => (
+const Flywheel = ({setActiveTab}) => {
+  const goTab = (tab) => {
+    setActiveTab?.(tab);
+    document.getElementById('products')?.scrollIntoView({behavior:'smooth'});
+  };
+  return (
   <section id="flywheel" style={{padding:"80px 24px",position:"relative",zIndex:1,textAlign:"center"}}>
     <div style={{maxWidth:900,margin:"0 auto"}}>
       <div style={{color:C.greenLight,fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:3,textTransform:"uppercase",marginBottom:12}}>The Business Model</div>
@@ -366,13 +371,13 @@ const Flywheel = () => (
             ))}
             {/* Outer nodes */}
             {[
-              {cx:190,cy:58,label:"HEALTH OS",color:"#1A90B0"},
-              {cx:310,cy:162,label:"CAREIQ OS",color:"#1A90B0"},
-              {cx:258,cy:302,label:"LONGEVITYIQ",color:"#C87020"},
-              {cx:118,cy:300,label:"CARECIRCLE",color:"#1E8A60"},
-              {cx:70,cy:162,label:"CHIKASHA AI",color:"#D4A820"},
+              {cx:190,cy:58,label:"HEALTH OS",color:"#1A90B0",tab:"chikasha"},
+              {cx:310,cy:162,label:"CAREIQ OS",color:"#1A90B0",tab:"care"},
+              {cx:258,cy:302,label:"LONGEVITYIQ",color:"#C87020",tab:"longevity"},
+              {cx:118,cy:300,label:"CARECIRCLE",color:"#1E8A60",tab:"chikasha"},
+              {cx:70,cy:162,label:"CHIKASHA AI",color:"#D4A820",tab:"chikasha"},
             ].map((n,i)=>(
-              <g key={i}>
+              <g key={i} onClick={()=>goTab(n.tab)} style={{cursor:"pointer"}}>
                 <circle cx={n.cx} cy={n.cy} r="30" fill="#0D1828" stroke={n.color} strokeWidth="1.2"/>
                 <text x={n.cx} y={n.cy+4} textAnchor="middle" fontSize="7.5" fill={n.color} fontFamily="Rajdhani,sans-serif" fontWeight="600">{n.label}</text>
               </g>
@@ -397,13 +402,12 @@ const Flywheel = () => (
           </svg>
         </div>
         <p style={{color:C.boneDim,fontSize:13,maxWidth:480,margin:"20px auto 0",lineHeight:1.8}}>AILT governance at the core. Sovereign Prompt Shield as the technical expression. Every product feeds training data, revenue, and patient relationships back into the center.</p>
-        <div style={{marginTop:20}}>
-          <a href="https://sovereign-flywheel.vercel.app" target="_blank" rel="noopener noreferrer" className="btn-ghost">Open Interactive Flywheel ↗</a>
-        </div>
+        <p style={{color:C.muted,fontSize:11,marginTop:14,fontFamily:"Rajdhani,sans-serif",letterSpacing:1,textTransform:"uppercase"}}>Click any outer node to jump to its platform ↓</p>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 const Technology = () => (
   <section id="technology" style={{padding:"80px 24px",position:"relative",zIndex:1}}>
@@ -807,7 +811,7 @@ export default function SovereignShieldSite() {
       <Hero setActiveTab={setActiveTab}/>
       <Mission/>
       <Products activeTab={activeTab} setActiveTab={setActiveTab}/>
-      <Flywheel/>
+      <Flywheel setActiveTab={setActiveTab}/>
       <Technology/>
       <Partners/>
       <Invest/>
