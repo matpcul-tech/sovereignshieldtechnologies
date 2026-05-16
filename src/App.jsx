@@ -178,9 +178,13 @@ const Mission = () => (
   </section>
 );
 
+const HealthOSPreview = () => (
+  <img src="/healthos.png" alt="Sovereign Health OS — encrypted patient onboarding" loading="lazy" style={{display:"block",width:"100%",height:"auto"}}/>
+);
+
 const CHIKASHA_PRODUCTS = [
   {icon:"◈",name:"CHIKASHA AI OS",sub:"Unified Sovereign Intelligence Platform",desc:"The command center. All sovereign systems unified under one interface — accessible to Nation Leadership, Healthcare providers, and Developers through distinct audience modes.",url:"https://chikasha-ai.vercel.app",color:C.goldLight,tags:["Nation Leadership Mode","Healthcare Mode","Developer Mode","6 Integrated Tabs","Shield Protected"],live:true,featured:true},
-  {icon:"⊕",name:"CHIKASHA HEALTH OS",sub:"Sovereign Preventive Health Platform",desc:"Precision preventive diagnostics, longitudinal health records, and AI care coordination — all within sovereign data walls. Zero PHI transmitted externally. Wearable connected.",url:"https://sovereignhealthcareos.com",color:C.greenLight,tags:["7-Tab Dashboard","Biomarker Tracking","Risk Engine","Wearable Connected","ZK Protected"],live:true},
+  {icon:"⊕",name:"CHIKASHA HEALTH OS",sub:"Sovereign Preventive Health Platform",desc:"Precision preventive diagnostics, longitudinal health records, and AI care coordination — all within sovereign data walls. Zero PHI transmitted externally. Wearable connected.",url:"https://sovereignhealthcareos.com",color:C.greenLight,tags:["7-Tab Dashboard","Biomarker Tracking","Risk Engine","Wearable Connected","ZK Protected"],live:true,preview:HealthOSPreview},
   {icon:"◉",name:"CHIKASHA FOUNDATIONAL MODEL",sub:"Sovereign AI — Four Modes",desc:"The Nation's own AI with four distinct modes: Citizen, Healthcare, Language, and Leadership. Shield-protected on every query. Built to be routed to sovereign infrastructure.",url:"https://chikashcfm.vercel.app",color:C.greenLight,tags:["Citizen Mode","Healthcare Mode","Language Mode","Leadership Mode","Shield Active"],live:true},
   {icon:"◎",name:"CHIKASHA LANGUAGE OS",sub:"Sovereign Language Preservation",desc:"AI-powered Chikashshanompa' dictionary, phrase learning, cultural knowledge, and oral history preservation — Shield-protected so the language never leaves sovereign control.",url:"https://chikashaailanguageos.vercel.app",color:C.goldBright,tags:["Dictionary AI","Phrase Builder","Cultural Knowledge","Oral History","ZK Protected"],live:true},
   {icon:"⬡",name:"SOVEREIGN PROMPT SHIELD",sub:"Data Protection Layer — USPTO Patent Pending",desc:"Intercepts every AI query before transmission. Detects PII, tribal enrollment data, and Chikashshanompa' terms — hashing them at the browser edge under tribal governance.",url:"https://chikashaai-promptshield12.vercel.app",color:C.goldLight,tags:["ZK Hash Layer","HIPAA Aligned","Real-time Detection","Tribal Governance","USPTO Patent Pending"],live:true},
@@ -208,8 +212,15 @@ const AILT_PRODUCTS = [
 
 const ProductGrid = ({products}) => (
   <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:16}}>
-    {products.map((p,i)=>(
+    {products.map((p,i)=>{
+      const Preview = p.preview;
+      return (
       <div key={i} className="product-card" style={{"--accent":p.color,gridColumn:p.featured?"1 / -1":"auto"}}>
+        {Preview && (
+          <a href={p.url} target="_blank" rel="noopener noreferrer" style={{display:"block",marginBottom:16,borderRadius:10,overflow:"hidden",border:`1px solid ${C.border}`,background:C.surface}}>
+            <Preview/>
+          </a>
+        )}
         {p.featured && (
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:16,marginBottom:16}}>
             <div style={{display:"flex",alignItems:"center",gap:10}}>
@@ -245,7 +256,8 @@ const ProductGrid = ({products}) => (
         </div>
         {!p.featured&&<a href={p.url} target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{fontSize:10,padding:"7px 14px"}}>View Live ↗</a>}
       </div>
-    ))}
+      );
+    })}
   </div>
 );
 
@@ -325,7 +337,12 @@ const Products = ({activeTab,setActiveTab}) => (
   </section>
 );
 
-const Flywheel = () => (
+const Flywheel = ({setActiveTab}) => {
+  const goTab = (tab) => {
+    setActiveTab?.(tab);
+    document.getElementById('products')?.scrollIntoView({behavior:'smooth'});
+  };
+  return (
   <section id="flywheel" style={{padding:"80px 24px",position:"relative",zIndex:1,textAlign:"center"}}>
     <div style={{maxWidth:900,margin:"0 auto"}}>
       <div style={{color:C.greenLight,fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:3,textTransform:"uppercase",marginBottom:12}}>The Business Model</div>
@@ -366,13 +383,13 @@ const Flywheel = () => (
             ))}
             {/* Outer nodes */}
             {[
-              {cx:190,cy:58,label:"HEALTH OS",color:"#1A90B0"},
-              {cx:310,cy:162,label:"CAREIQ OS",color:"#1A90B0"},
-              {cx:258,cy:302,label:"LONGEVITYIQ",color:"#C87020"},
-              {cx:118,cy:300,label:"CARECIRCLE",color:"#1E8A60"},
-              {cx:70,cy:162,label:"CHIKASHA AI",color:"#D4A820"},
+              {cx:190,cy:58,label:"HEALTH OS",color:"#1A90B0",tab:"chikasha"},
+              {cx:310,cy:162,label:"CAREIQ OS",color:"#1A90B0",tab:"care"},
+              {cx:258,cy:302,label:"LONGEVITYIQ",color:"#C87020",tab:"longevity"},
+              {cx:118,cy:300,label:"CARECIRCLE",color:"#1E8A60",tab:"chikasha"},
+              {cx:70,cy:162,label:"CHIKASHA AI",color:"#D4A820",tab:"chikasha"},
             ].map((n,i)=>(
-              <g key={i}>
+              <g key={i} onClick={()=>goTab(n.tab)} style={{cursor:"pointer"}}>
                 <circle cx={n.cx} cy={n.cy} r="30" fill="#0D1828" stroke={n.color} strokeWidth="1.2"/>
                 <text x={n.cx} y={n.cy+4} textAnchor="middle" fontSize="7.5" fill={n.color} fontFamily="Rajdhani,sans-serif" fontWeight="600">{n.label}</text>
               </g>
@@ -397,13 +414,12 @@ const Flywheel = () => (
           </svg>
         </div>
         <p style={{color:C.boneDim,fontSize:13,maxWidth:480,margin:"20px auto 0",lineHeight:1.8}}>AILT governance at the core. Sovereign Prompt Shield as the technical expression. Every product feeds training data, revenue, and patient relationships back into the center.</p>
-        <div style={{marginTop:20}}>
-          <a href="https://sovereign-flywheel.vercel.app" target="_blank" rel="noopener noreferrer" className="btn-ghost">Open Interactive Flywheel ↗</a>
-        </div>
+        <p style={{color:C.muted,fontSize:11,marginTop:14,fontFamily:"Rajdhani,sans-serif",letterSpacing:1,textTransform:"uppercase"}}>Click any outer node to jump to its platform ↓</p>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 const Technology = () => (
   <section id="technology" style={{padding:"80px 24px",position:"relative",zIndex:1}}>
@@ -807,7 +823,7 @@ export default function SovereignShieldSite() {
       <Hero setActiveTab={setActiveTab}/>
       <Mission/>
       <Products activeTab={activeTab} setActiveTab={setActiveTab}/>
-      <Flywheel/>
+      <Flywheel setActiveTab={setActiveTab}/>
       <Technology/>
       <Partners/>
       <Invest/>
