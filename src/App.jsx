@@ -199,8 +199,8 @@ const CARE_PRODUCTS = [
 ];
 
 const LONGEVITY_PRODUCTS = [
-  {icon:"🧬",name:"LONGEVITYIQ SPA",sub:"Sovereign Wellness Franchise — Rural Oklahoma + Indian Country",desc:"The first sovereign wellness franchise. Non-clinical launch: infrared sauna, cold plunge, red light therapy, breathwork, compression. $8K-$22K startup per location. Scales to 74 Oklahoma counties and 574 federally recognized tribes.",url:"https://longevityiq.vercel.app",color:C.amberLight,tags:["Franchise Model","Rural Oklahoma","No License Phase 1","574 Tribes TAM","$8K-$22K Startup"],live:true,featured:true},
-  {icon:"💊",name:"LONGEVITYIQ PLATFORM",sub:"AI Bio Age Assessment + Protocol Engine",desc:"AI-powered biological age assessment, personalized longevity protocol recommendations, and daily sovereign health insights. Every client takes the bio age assessment on arrival. Protocol recommendations driven by the sovereign health LLM.",url:"https://longevityiq.vercel.app",color:C.amberLight,tags:["Bio Age Assessment","8 Protocols","Daily AI Insight","LLM Powered","Shield Protected"],live:true},
+  {icon:"🧬",name:"LONGEVITYIQ SPA",sub:"Sovereign Wellness Franchise — Rural Oklahoma + Indian Country",desc:"The first sovereign wellness franchise. Non-clinical launch: infrared sauna, cold plunge, red light therapy, breathwork, compression. $8K-$22K startup per location. Scales to 74 Oklahoma counties and 574 federally recognized tribes.",url:"https://longevityiq.sovereignshieldtechnologies.com",color:C.amberLight,tags:["Franchise Model","Rural Oklahoma","No License Phase 1","574 Tribes TAM","$8K-$22K Startup"],live:true,featured:true},
+  {icon:"💊",name:"LongevityIQ",sub:"Sovereign Wellness Studio. Eight longevity protocols. AI-personalized membership.",desc:"Sovereign Wellness Studio. Eight longevity protocols. AI-personalized membership.",url:"https://longevityiq.sovereignshieldtechnologies.com",color:C.amberLight,tags:["8 Protocols","AI Personalized","Membership","Stripe Billing","Shield Protected"],live:true,button:"Visit LongevityIQ",sameTab:true},
   {icon:"💉",name:"CLINICAL LICENSING",sub:"IV Therapy · NAD+ · Peptides · Hormone",desc:"Phase 2 clinical services licensed to existing medical spas, FQHCs, and tribal health clinics. Platform fee $1,000-$2,500/mo. 10-15% revenue share. Licensed NP or MD partner owns the clinical side entirely.",url:"#contact",color:C.goldLight,tags:["IV Drip","NAD+ Infusion","Peptide Therapy","NP/MD Partner","Zero Liability"],live:false},
 ];
 
@@ -232,7 +232,7 @@ const ProductGrid = ({products}) => (
             </div>
             <div style={{display:"flex",flexDirection:"column",gap:8,alignItems:"flex-end"}}>
               <Pill label={p.live?"Live":"Coming Soon"} color={p.live?p.color:C.muted}/>
-              <a href={p.url} target="_blank" rel="noopener noreferrer" className="btn-ghost">View Platform ↗</a>
+              <a href={p.url} {...(p.sameTab?{}:{target:"_blank",rel:"noopener noreferrer"})} className="btn-ghost">{p.button||"View Platform ↗"}</a>
             </div>
           </div>
         )}
@@ -254,7 +254,7 @@ const ProductGrid = ({products}) => (
             <span key={j} style={{background:C.surface,border:`1px solid ${C.border}`,color:C.muted,padding:"3px 8px",borderRadius:5,fontSize:9,fontFamily:"Rajdhani,sans-serif",letterSpacing:0.5}}>{t}</span>
           ))}
         </div>
-        {!p.featured&&<a href={p.url} target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{fontSize:10,padding:"7px 14px"}}>View Live ↗</a>}
+        {!p.featured&&<a href={p.url} {...(p.sameTab?{}:{target:"_blank",rel:"noopener noreferrer"})} className="btn-ghost" style={{fontSize:10,padding:"7px 14px"}}>{p.button||"View Live ↗"}</a>}
       </div>
       );
     })}
