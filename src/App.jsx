@@ -114,6 +114,7 @@ const Hero = ({setActiveTab}) => {
           <Pill label="Community Health Intelligence" color={C.tealLight}/>
           <Pill label="Longevity Wellness Franchise" color={C.amberLight}/>
         </div>
+        <div className="fade-up" style={{color:C.goldLight,fontFamily:"Rajdhani,sans-serif",fontSize:11,fontWeight:700,letterSpacing:2,textTransform:"uppercase",marginBottom:18}}>Building the Next Hyperscaler, One Node at a Time</div>
         <h1 className="fade-up-2 glow-gold" style={{fontFamily:"Cormorant Garamond,serif",fontSize:"clamp(40px,7vw,76px)",fontWeight:300,lineHeight:1.1,color:C.goldBright,marginBottom:16,letterSpacing:-1}}>
           The AI Infrastructure<br/><em style={{fontStyle:"italic",color:C.bone}}>Communities Own.</em>
         </h1>
@@ -121,7 +122,7 @@ const Hero = ({setActiveTab}) => {
           Sovereign Shield Technologies LLC builds sovereign AI health platforms, wellness infrastructure, and leadership technology — owned entirely by the communities they serve.
         </p>
         <p className="fade-up-3" style={{fontFamily:"Cormorant Garamond,serif",fontSize:"clamp(14px,2vw,18px)",color:C.goldLight,lineHeight:1.6,fontStyle:"italic",marginBottom:36,maxWidth:580,margin:"0 auto 36px"}}>
-          "Luxury big-city longevity healthcare for the sovereign and the urban."
+          "Luxury big-city longevity healthcare for sovereign nations and urban communities."
         </p>
         <div className="fade-up-4" style={{display:"flex",gap:14,justifyContent:"center",flexWrap:"wrap",marginBottom:40}}>
           <a href="/onboard" className="btn-sovereign" style={{fontSize:13}}>⬡ Enter SovereignOne</a>
