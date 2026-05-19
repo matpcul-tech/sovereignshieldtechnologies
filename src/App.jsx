@@ -506,19 +506,19 @@ const Invest = () => (
     <div style={{maxWidth:900,margin:"0 auto"}}>
       <div style={{textAlign:"center",marginBottom:48}}>
         <div style={{color:C.goldLight,fontFamily:"Rajdhani,sans-serif",fontSize:10,letterSpacing:3,textTransform:"uppercase",marginBottom:12}}>Investment Opportunity</div>
-        <h2 style={{fontFamily:"Cormorant Garamond,serif",fontSize:"clamp(28px,4vw,44px)",fontWeight:300,color:C.bone,marginBottom:14}}>Seed Bridge Round</h2>
-        <p style={{color:C.boneDim,fontSize:16,maxWidth:560,margin:"0 auto",lineHeight:1.8}}>Raising $1.5M at a $4M-$5M pre-money valuation. Four live platforms. USPTO provisional patent. Sovereign health LLM at 97.78% accuracy. TAM $3.4B+.</p>
+        <h2 style={{fontFamily:"Cormorant Garamond,serif",fontSize:"clamp(28px,4vw,44px)",fontWeight:300,color:C.bone,marginBottom:14}}>Pre-Seed Round</h2>
+        <p style={{color:C.boneDim,fontSize:16,maxWidth:560,margin:"0 auto",lineHeight:1.8}}>Raising $3M at a $10M pre-money valuation. Sovereign AI infrastructure with tribal data sovereignty as the architectural moat. Eleven products live in production. USPTO provisional patent on the Sovereign Prompt Shield. Sovereign health LLM trained on 41,000+ pairs at 97.78% accuracy. Phase 1 wedge: LongevityIQ Sovereign Wellness Studio in Ada. Phase 2: sovereign micro data center. Phase 3: FQHC and RPM healthcare expansion.</p>
       </div>
 
       {/* Key numbers */}
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(150px,1fr))",gap:14,marginBottom:32}}>
         {[
-          {val:"$1.5M",label:"Current Ask"},
-          {val:"$4M–$5M",label:"Pre-Money Valuation"},
-          {val:"20–30%",label:"Equity Offered"},
-          {val:"$25K",label:"Minimum Check"},
+          {val:"$3M",label:"Current Ask"},
+          {val:"$10M",label:"Pre-Money Valuation"},
+          {val:"23%",label:"Equity Offered"},
+          {val:"$50K",label:"Minimum Check"},
           {val:"60–90",label:"Days to Close"},
-          {val:"$335K",label:"Year 1 Target"},
+          {val:"SAFE/Priced",label:"Round Structure"},
         ].map((s,i)=>(
           <div key={i} style={{background:C.panel,border:`1px solid ${C.border}`,borderTop:`2px solid ${C.goldLight}`,borderRadius:12,padding:"18px 14px",textAlign:"center"}}>
             <div style={{color:C.goldLight,fontFamily:"Rajdhani,sans-serif",fontWeight:700,fontSize:24,marginBottom:4,letterSpacing:-0.5}}>{s.val}</div>
@@ -530,9 +530,9 @@ const Invest = () => (
       {/* Revenue projections */}
       <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:14,marginBottom:32}}>
         {[
-          {yr:"Year 1",val:"$335K",items:["1 FQHC contract: $48K","RPM revenue: $12K","NSF SBIR Phase 1: $275K"],color:C.tealLight},
-          {yr:"Year 2",val:"$1.916M",items:["3-5 FQHC contracts","RPM expansion","Shield enterprise licensing"],color:C.goldLight},
-          {yr:"Year 3",val:"$4.06M",items:["10+ FQHC contracts","Tribal nation contracts","Series A positioning"],color:C.greenLight},
+          {yr:"Year 1",val:"$335K",items:["LongevityIQ Studio Ada open","Membership and protocol revenue","NSF SBIR Phase 1 award"],color:C.tealLight},
+          {yr:"Year 2",val:"$1.916M",items:["Sovereign micro data center build","Shield enterprise licensing","Studio expansion"],color:C.goldLight},
+          {yr:"Year 3",val:"$4.06M",items:["FQHC contracts and RPM","Tribal nation contracts","Series A positioning"],color:C.greenLight},
         ].map((y,i)=>(
           <div key={i} style={{background:C.panel,border:`1px solid ${C.border}`,borderTop:`2px solid ${y.color}`,borderRadius:12,padding:"20px"}}>
             <div style={{color:y.color,fontFamily:"Rajdhani,sans-serif",fontWeight:700,fontSize:11,letterSpacing:1.5,textTransform:"uppercase",marginBottom:8}}>{y.yr}</div>
@@ -546,13 +546,13 @@ const Invest = () => (
 
       {/* Use of funds */}
       <div style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:14,padding:"28px 32px",marginBottom:24}}>
-        <div style={{color:C.goldLight,fontFamily:"Rajdhani,sans-serif",fontWeight:700,fontSize:11,letterSpacing:2,textTransform:"uppercase",marginBottom:16}}>Use of Funds — $1.5M</div>
+        <div style={{color:C.goldLight,fontFamily:"Rajdhani,sans-serif",fontWeight:700,fontSize:11,letterSpacing:2,textTransform:"uppercase",marginBottom:16}}>Use of Funds · $3M</div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(200px,1fr))",gap:10}}>
           {[
-            ["Founder Salary","$120K"],["Clinical Sales Hire","$100K"],["Sovereign Data Center","$120K"],
-            ["Product Dev + LLM","$80K"],["Sales and Marketing","$60K"],["CFM Compute","$50K"],
-            ["HIPAA Certification","$20K"],["Healthcare Attorney","$25K"],["Full Patent","$15K"],
-            ["Office Space Ada OK","$15K"],["Infrastructure","$20K"],["Working Capital + Reserve","$95K"],
+            ["Founder Salary","$200K"],["LongevityIQ Studio Ada","$600K"],["Studio Operating Capital","$250K"],
+            ["Sovereign Micro Data Center","$750K"],["Product Dev and LLM","$200K"],["Sovereign Prompt Shield","$150K"],
+            ["Patent and Legal","$100K"],["Sales and Marketing","$200K"],["Clinical Sales Hire","$150K"],
+            ["HIPAA Aligned Audit","$50K"],["Working Capital + Reserve","$250K"],["Infrastructure","$100K"],
           ].map(([k,v])=>(
             <div key={k} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"8px 12px",background:C.card,borderRadius:8,border:`1px solid ${C.border}`}}>
               <span style={{color:C.boneDim,fontSize:12}}>{k}</span>
