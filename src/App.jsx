@@ -114,6 +114,7 @@ const Hero = ({setActiveTab}) => {
           <Pill label="Community Health Intelligence" color={C.tealLight}/>
           <Pill label="Longevity Wellness Franchise" color={C.amberLight}/>
         </div>
+        <div className="fade-up" style={{color:C.goldLight,fontFamily:"Rajdhani,sans-serif",fontSize:11,fontWeight:700,letterSpacing:2,textTransform:"uppercase",marginBottom:18}}>Building the Next Hyperscaler, One Node at a Time</div>
         <h1 className="fade-up-2 glow-gold" style={{fontFamily:"Cormorant Garamond,serif",fontSize:"clamp(40px,7vw,76px)",fontWeight:300,lineHeight:1.1,color:C.goldBright,marginBottom:16,letterSpacing:-1}}>
           The AI Infrastructure<br/><em style={{fontStyle:"italic",color:C.bone}}>Communities Own.</em>
         </h1>
