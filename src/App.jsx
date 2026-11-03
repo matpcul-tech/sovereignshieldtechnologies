@@ -185,10 +185,10 @@ const HealthOSPreview = () => (
 
 const CHIKASHA_PRODUCTS = [
   {icon:"◈",name:"CHIKASHA AI OS",sub:"Unified Sovereign Intelligence Platform",desc:"The command center. All sovereign systems unified under one interface — accessible to Nation Leadership, Healthcare providers, and Developers through distinct audience modes.",url:"https://chikasha-ai.vercel.app",color:C.goldLight,tags:["Nation Leadership Mode","Healthcare Mode","Developer Mode","6 Integrated Tabs","Shield Protected"],live:true,featured:true},
-  {icon:"⊕",name:"CHIKASHA HEALTH OS",sub:"Sovereign Preventive Health Platform",desc:"Precision preventive diagnostics, longitudinal health records, and AI care coordination — all within sovereign data walls. Zero PHI transmitted externally. Wearable connected.",url:"https://sovereignhealthcareos.com",color:C.greenLight,tags:["7-Tab Dashboard","Biomarker Tracking","Risk Engine","Wearable Connected","ZK Protected"],live:true,preview:HealthOSPreview},
+  {icon:"⊕",name:"CHIKASHA HEALTH OS",sub:"Sovereign Preventive Health Platform",desc:"Precision preventive diagnostics, longitudinal health records, and AI care coordination, all within sovereign data walls. Zero PHI transmitted externally. Wearable connected.",url:"https://sovereignhealthcareos.com",color:C.greenLight,tags:["7-Tab Dashboard","Biomarker Tracking","Risk Engine","Wearable Connected","Shield Protected"],live:true,preview:HealthOSPreview},
   {icon:"◉",name:"CHIKASHA FOUNDATIONAL MODEL",sub:"Sovereign AI — Four Modes",desc:"The Nation's own AI with four distinct modes: Citizen, Healthcare, Language, and Leadership. Shield-protected on every query. Built to be routed to sovereign infrastructure.",url:"https://chikashcfm.vercel.app",color:C.greenLight,tags:["Citizen Mode","Healthcare Mode","Language Mode","Leadership Mode","Shield Active"],live:true},
-  {icon:"◎",name:"CHIKASHA LANGUAGE OS",sub:"Sovereign Language Preservation",desc:"AI-powered Chikashshanompa' dictionary, phrase learning, cultural knowledge, and oral history preservation — Shield-protected so the language never leaves sovereign control.",url:"https://chikashaailanguageos.vercel.app",color:C.goldBright,tags:["Dictionary AI","Phrase Builder","Cultural Knowledge","Oral History","ZK Protected"],live:true},
-  {icon:"⬡",name:"SOVEREIGN PROMPT SHIELD",sub:"Data Protection Layer — USPTO Patent Pending",desc:"Intercepts every AI query before transmission. Detects PII, tribal enrollment data, and Chikashshanompa' terms — hashing them at the browser edge under tribal governance.",url:"https://chikashaai-promptshield12.vercel.app",color:C.goldLight,tags:["ZK Hash Layer","HIPAA Aligned","Real-time Detection","Tribal Governance","USPTO Patent Pending"],live:true},
+  {icon:"◎",name:"CHIKASHA LANGUAGE OS",sub:"Sovereign Language Preservation",desc:"AI-powered Chikashshanompa' dictionary, phrase learning, cultural knowledge, and oral history preservation, Shield-protected so the language never leaves sovereign control.",url:"https://chikashaailanguageos.vercel.app",color:C.goldBright,tags:["Dictionary AI","Phrase Builder","Cultural Knowledge","Oral History","Shield Protected"],live:true},
+  {icon:"⬡",name:"SOVEREIGN PROMPT SHIELD",sub:"Data Protection Layer, USPTO Patent Pending",desc:"Intercepts every AI query before transmission. Detects PII, tribal enrollment data, and Chikashshanompa' terms, hashing them at the browser edge under tribal governance.",url:"https://chikashaai-promptshield12.vercel.app",color:C.goldLight,tags:["Hash Layer","HIPAA Aligned","Real-time Detection","Tribal Governance","USPTO Patent Pending"],live:true},
   {icon:"◉",name:"CARECIRCLE SOVEREIGN EDITION",sub:"Family Elder Care — Tribal Health Connected",desc:"Family care coordination for Chickasaw elder households. Medication tracking, appointments, and care tasks — with the Sovereign Health OS clinical view built directly in for the family.",url:"https://carecircle-sovereign.vercel.app",color:C.greenLight,tags:["Medication Tracking","Appointment Sync","Health OS Connected","Shield Protected","Elder Care"],live:true},
 ];
 
@@ -196,7 +196,7 @@ const CARE_PRODUCTS = [
   {icon:"⊕",name:"CAREIQ",sub:"FQHC Community Health Intelligence",desc:"AI-powered preventive health intelligence for Federally Qualified Health Centers. Risk stratification, care gap identification, and patient health scoring — protecting 30M community health patients.",url:"https://care-iq-sable.vercel.app",color:C.tealLight,tags:["Risk Stratification","Care Gap Engine","UDS Reporting","HIPAA Aligned","Shield Protected"],live:true,featured:true},
   {icon:"◉",name:"CARECIRCLE FQHC EDITION",sub:"Family Elder Care — CareIQ Connected",desc:"Family care coordination for elder households served by FQHCs. Medication tracking, care tasks, and family coordination — with CareIQ clinical data shared directly to the family view.",url:"https://care-os-uo7x.vercel.app",color:C.tealLight,tags:["Medication Tracking","Care Tasks","CareIQ Built In","Shield Protected","Elder Care"],live:true},
   {icon:"◈",name:"EDUIQ",sub:"Child Mental Health Early Warning",desc:"A student-centered intelligence platform connecting school, home, healthcare, and community services — with parents at the center of every decision. Identifies early warning signals across domains before a crisis develops.",url:"https://eduiq-jmkr8enhq-matpcul-7370s-projects.vercel.app",color:C.tealBright,tags:["Parent Controlled","School Connected","Mental Health AI","Shield Protected","Early Warning"],live:true},
-  {icon:"⬡",name:"SOVEREIGN PROMPT SHIELD",sub:"Shared Data Protection Layer",desc:"The same zero-knowledge cryptographic protection layer that powers Chikasha AI runs across every Care AI product. HIPAA-aligned, privacy-by-architecture, not just policy.",url:"https://chikashaai-promptshield12.vercel.app",color:C.tealLight,tags:["ZK Hash Layer","HIPAA Aligned","Browser Edge","PHI Protection","Shared Infrastructure"],live:true},
+  {icon:"⬡",name:"SOVEREIGN PROMPT SHIELD",sub:"Shared Data Protection Layer",desc:"The same identifier protection layer that powers Chikasha AI runs across every Care AI product. HIPAA-aligned, privacy-by-architecture, not just policy.",url:"https://chikashaai-promptshield12.vercel.app",color:C.tealLight,tags:["Hash Layer","HIPAA Aligned","Browser Edge","PHI Protection","Shared Infrastructure"],live:true},
 ];
 
 const LONGEVITY_PRODUCTS = [
@@ -433,7 +433,7 @@ const Technology = () => (
       <div style={{display:"flex",flexDirection:"column",gap:3,maxWidth:600,margin:"0 auto 48px",position:"relative"}}>
         {[
           {layer:"Citizen / Patient / Family",desc:"Types query on any device — phone, tablet, or desktop",color:C.boneDim,bg:C.panel},
-          {layer:"Sovereign Prompt Shield",desc:"ZK hashes sensitive terms at browser edge — PHI, tribal language, and PII never transmit in plain text",color:C.goldLight,bg:`${C.gold}12`},
+          {layer:"Sovereign Prompt Shield",desc:"Screens AI queries for sensitive identifiers before they are sent to a model",color:C.goldLight,bg:`${C.gold}12`},
           {layer:"Platform AI Engine",desc:"Protected query processed by Chikasha AI or CareIQ — culturally grounded, clinically accurate, sovereignty-first",color:C.greenLight,bg:`${C.green}12`},
           {layer:"Sovereign Infrastructure",desc:"Trace Fiber Network · FQHC-controlled servers · Tribal law · Zero external cloud dependency",color:C.goldBright,bg:`${C.gold}08`},
         ].map((item,i)=>(
@@ -709,7 +709,7 @@ const Footer = () => (
 
 // ── SOVEREIGNONE ONBOARDING FLOW ─────────────────────────────
 const OB_STEPS = [
-  {id:"email",q:"Create your sovereign health identity",sub:"Your data is encrypted from the moment you enter. Never reaches a commercial AI server in readable form.",type:"email"},
+  {id:"email",q:"Create your sovereign health identity",sub:"Health records are encrypted at rest with AES-256-GCM. HIPAA-aligned architecture.",type:"email"},
   {id:"tribal",q:"Are you a citizen of a tribal nation?",sub:"This unlocks your cultural sovereignty layer -- language tools, governance resources, and culturally grounded health insights.",type:"choice",opts:[{icon:"🦅",label:"Yes -- Chickasaw Nation"},{icon:"🌿",label:"Yes -- other tribal nation"},{icon:"🌎",label:"No -- general public"}]},
   {id:"wearable",q:"Do you have a wearable device?",sub:"SovereignOne connects to any wearable that syncs to Apple Health or Google Fit -- Apple Watch, Oura Ring, Fitbit, Garmin, Whoop, Samsung Galaxy Watch, and more.",type:"choice",opts:[{icon:"⌚",label:"Yes -- Apple Health compatible"},{icon:"🤖",label:"Yes -- Google Fit compatible"},{icon:"💍",label:"Yes -- Oura Ring or Whoop"},{icon:"❌",label:"No wearable yet"}]},
   {id:"care",q:"Do you have a primary care provider or FQHC?",sub:"If your clinic uses CareIQ your clinical records will sync securely to your dashboard.",type:"choice",opts:[{icon:"🏥",label:"Yes -- sync my clinical records"},{icon:"👤",label:"No -- self-directed health only"}]},
@@ -804,7 +804,7 @@ function SovereignOneOnboard() {
           {step+1>=OB_STEPS.length ? "Enter My Sovereign Dashboard" : "Continue"}
         </button>
       </div>
-      <div className="ob-enc"><div className="ob-enc-dot"/><span className="ob-enc-text">AES-256-GCM · Zero-Knowledge · Sovereign Prompt Shield v5</span></div>
+      <div className="ob-enc"><div className="ob-enc-dot"/><span className="ob-enc-text">Encrypted at rest with AES-256-GCM · Sovereign Prompt Shield v5</span></div>
       <div style={{marginTop:10}}><a href="/" style={{color:"#304858",fontSize:11,fontFamily:"Rajdhani,sans-serif",letterSpacing:1,textTransform:"uppercase",textDecoration:"none"}}>← Back to Sovereign Shield</a></div>
     </div>
   );
